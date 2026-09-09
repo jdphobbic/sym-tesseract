@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESSERACT ’26 — Admin Management Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="brand-icon">T</div>
+                <div>
+                    <span class="brand-title">TESSERACT ’26 ADMIN</span>
+                    <span class="brand-sub">Management Portal | ECE Dept</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Main Website</a></li>
+                <li><a href="/register" class="nav-link">Events Showcase</a></li>
+                <li><a href="/admin/logout" class="btn btn-secondary btn-sm" style="color: #f87171; border-color: rgba(239, 68, 68, 0.4); padding: 0.4rem 0.9rem;">🔒 Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ADMIN CONTAINER -->
+    <main class="container" style="max-width: 1280px; padding-top: 2rem; padding-bottom: 4rem;">
+
+        <!-- METRICS SUMMARY CARDS -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+            <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Total Registrations</div>
+                <div style="font-size: 2.2rem; font-weight: 800; color: var(--primary-cyan);" id="metric-total">0</div>
+            </div>
+            <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Technical Events Reg.</div>
+                <div style="font-size: 2.2rem; font-weight: 800; color: #a855f7;" id="metric-tech">0</div>
+            </div>
+            <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Non-Technical Events Reg.</div>
+                <div style="font-size: 2.2rem; font-weight: 800; color: var(--accent-magenta);" id="metric-nontech">0</div>
+            </div>
+            <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Active Events</div>
+                <div style="font-size: 2.2rem; font-weight: 800; color: var(--accent-emerald);" id="metric-active-events">0</div>
+            </div>
+        </div>
+
+        <!-- TABS BAR -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="category-tabs" style="margin-bottom: 0;">
+                <button class="tab-btn active" id="tab-btn-regs" onclick="switchAdminTab('regs')">REGISTRATIONS MANAGEMENT</button>
+                <button class="tab-btn" id="tab-btn-events" onclick="switchAdminTab('events')">EVENT CONTROL & CUSTOM FIELDS</button>
+                <button class="tab-btn" id="tab-btn-emails" onclick="switchAdminTab('emails')">EMAIL LOGS</button>
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-secondary btn-sm" onclick="loadAdminData()">🔄 Refresh</button>
+                <a href="/api/admin/export" class="btn btn-primary btn-sm">📥 Export CSV</a>
+            </div>
+        </div>
+
+        <!-- TAB 1: REGISTRATIONS MANAGEMENT -->
+        <div id="admin-tab-regs" class="glass-card" style="padding: 1.5rem;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center;">
+                <div style="flex: 1; min-width: 250px;">
+                    <input type="text" id="admin-search-input" class="form-control" placeholder="Search by Registration ID, Name, Email, College..." oninput="handleAdminSearch()">
+                </div>
+                <div style="min-width: 180px;">
+                    <select id="admin-filter-event" class="form-control" onchange="loadRegistrations()">
+                        <option value="">All Events</option>
+                    </select>
+                </div>
+                <div style="min-width: 140px;">
+                    <select id="admin-filter-status" class="form-control" onchange="loadRegistrations()">
+                        <option value="">All Statuses</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="pending">Pending</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Reg ID</th>
+                            <th>Participant</th>
+                            <th>Selected Event</th>
+                            <th>College & Dept</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registrations-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Loading registrations...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 2: EVENT CONTROL & CUSTOM FIELDS -->
+        <div id="admin-tab-events" class="glass-card" style="padding: 1.5rem; display: none;">
+            <h3 style="color: var(--primary-cyan); margin-bottom: 1rem;">SYMPOSIUM EVENT CONTROL & REGISTRATION STATUS</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                Toggle registration status (`registration_open`), update venues, configure custom fields, or set max team sizes.
+            </p>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Category</th>
+                            <th>Venue</th>
+                            <th>Prizes</th>
+                            <th>Team Limit</th>
+                            <th>Registration Open</th>
+                            <th>Configure</th>
+                        </tr>
+                    </thead>
+                    <tbody id="events-control-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Loading event settings...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 3: EMAIL LOGS -->
+        <div id="admin-tab-emails" class="glass-card" style="padding: 1.5rem; display: none;">
+            <h3 style="color: var(--primary-cyan); margin-bottom: 1rem;">EMAIL NOTIFICATION AUDIT LOGS</h3>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Reg ID</th>
+                            <th>Recipient</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                            <th>Timestamp</th>
+                            <th>Template</th>
+                        </tr>
+                    </thead>
+                    <tbody id="email-logs-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Loading email logs...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODAL FOR REGISTRATION DETAILS -->
+    <div id="detail-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; justify-content: center; align-items: center; padding: 1rem;">
+        <div class="glass-card" style="max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; background: #0f1426; border-color: var(--primary-cyan);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--primary-cyan); margin: 0;" id="modal-reg-id">TES26-XXXXXX</h3>
+                <button class="btn btn-secondary btn-sm" onclick="closeModal()">✕ Close</button>
+            </div>
+            <div id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

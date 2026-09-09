@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESSERACT ’26 — National Level Symposium</title>
+    <meta name="description" content="TESSERACT ’26 National Level Symposium organized by Department of ECE, Aalim Muhammed Salegh College of Engineering on 12 September 2026. Register now!">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- INTERACTIVE WIREFRAME TESSERACT BACKGROUND CANVAS -->
+    <canvas id="tesseract-bg-canvas"></canvas>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <svg class="brand-icon-svg" viewBox="0 0 24 24">
+                    <polygon points="12 2, 22 8.5, 22 15.5, 12 22, 2 15.5, 2 8.5"></polygon>
+                    <polygon points="12 6, 18 10, 18 14, 12 18, 6 14, 6 10"></polygon>
+                    <line x1="12" y1="2" x2="12" y2="6"></line>
+                    <line x1="22" y1="8.5" x2="18" y2="10"></line>
+                    <line x1="22" y1="15.5" x2="18" y2="14"></line>
+                    <line x1="12" y1="22" x2="12" y2="18"></line>
+                    <line x1="2" y1="15.5" x2="6" y2="14"></line>
+                    <line x1="2" y1="8.5" x2="6" y2="10"></line>
+                </svg>
+                <span class="brand-title">TESSERACT '26</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#featured-events" class="nav-link">EVENTS</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#committee" class="nav-link">COMMITTEE</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+                <li><a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="padding: 0.6rem 1.4rem;">REGISTER NOW ↗</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION EXACT MATCH TO MOCKUP IMAGE -->
+    <section class="container" style="padding-top: 3.5rem; padding-bottom: 4rem; text-align: center; position: relative;">
+        
+        <!-- Top Mono Tag -->
+        <div style="margin-bottom: 2rem;">
+            <span class="mono-tag">NATIONAL-LEVEL SYMPOSIUM</span>
+        </div>
+
+        <!-- 3D Ice-Blue TESSERACT'26 Title Image -->
+        <div style="margin-bottom: 1.5rem;">
+            <img src="{{ url_for('static', filename='images/tesseract26_logo_3d.jpg') }}" alt="TESSERACT '26 3D Logo" class="hero-logo-img">
+        </div>
+
+        <!-- Tagline Below Title -->
+        <div class="font-mono" style="font-size: 1rem; color: #cbd5e1; letter-spacing: 4px; margin-bottom: 2rem;">
+            INNOVATION &nbsp;•&nbsp; TECHNOLOGY &nbsp;•&nbsp; COMPETITION
+        </div>
+
+        <!-- Subhead Date & College -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; color: #94a3b8;" class="font-mono">
+            <div style="font-size: 1.4rem; color: #fff; font-weight: 700; letter-spacing: 2px;">12 / 09</div>
+            <div style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;">AALIM MUHAMMED SALEGH COLLEGE OF ENGINEERING</div>
+        </div>
+
+        <!-- Hero Buttons -->
+        <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="font-size: 1rem; padding: 0.9rem 2.5rem;">
+                REGISTER VIA GOOGLE FORM ↗
+            </a>
+            <a href="#featured-events" class="btn-outline-dark" style="font-size: 1rem; padding: 0.9rem 2rem;">
+                EXPLORE EVENTS & RULES ↓
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURED EVENTS SECTION -->
+    <section id="featured-events" class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <span class="mono-tag" style="margin-bottom: 0.5rem;">13 SYMPOSIUM EVENTS & STALLS</span>
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; color: #fff;">FEATURED EVENTS & RULES</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 700px; margin: 0 auto;">
+                Explore competition details, venue, winning cash prizes, and official posters. All participant registrations are submitted directly through the official Google Form.
+            </p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="font-size: 0.95rem; padding: 0.7rem 2rem;">
+                    👉 CLICK HERE TO REGISTER (GOOGLE FORM) ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="events-grid" id="landing-events-grid">
+            <div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 3rem;">
+                Loading events and guidelines from database...
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="container" style="padding-bottom: 5rem;">
+        <div class="glass-card" style="max-width: 950px; margin: 0 auto; padding: 3rem; border-color: var(--border-cyan);">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span class="mono-tag">ORGANIZED BY</span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin-top: 0.5rem;">
+                    DEPARTMENT OF ELECTRONICS & COMMUNICATION ENGINEERING
+                </h3>
+            </div>
+            <p style="color: var(--text-muted); text-align: center; line-height: 1.8; font-size: 1rem; max-width: 800px; margin: 0 auto;">
+                Aalim Muhammed Salegh College of Engineering invites students from across the nation to test their technical brilliance and creative talents at <strong>TESSERACT ’26</strong> on <strong>12 September 2026</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- COORDINATORS / COMMITTEE SECTION -->
+    <section id="committee" class="container" style="padding-bottom: 5rem;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <span class="mono-tag" style="margin-bottom: 0.75rem; display: block;">ECE DEPARTMENT STUDENT ASSOCIATION</span>
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; color: #fff; margin-bottom: 0.75rem;">OFFICE BEARERS</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">The dedicated student leaders organizing TESSERACT '26 — National Level Symposium.</p>
+        </div>
+
+        <div class="coordinators-grid">
+            <!-- President -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/President.jpeg') }}" alt="R. Rathish - President" loading="lazy">
+                </div>
+                <div class="coordinator-designation">President</div>
+                <div class="coordinator-name">R. RATHISH</div>
+                <a href="tel:8925046648" class="coordinator-phone">📞 89250 46648</a>
+            </div>
+
+            <!-- Vice President -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/vice president.jpeg') }}" alt="Naisana H - Vice President" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Vice President</div>
+                <div class="coordinator-name">NAISANA H</div>
+                <a href="tel:9345543114" class="coordinator-phone">📞 93455 43114</a>
+            </div>
+
+            <!-- Treasurer -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/Treasurer.jpeg') }}" alt="M. Mohammed Aarif - Treasurer" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Treasurer</div>
+                <div class="coordinator-name">M. MOHAMMED AARIF</div>
+                <a href="tel:8637429625" class="coordinator-phone">📞 86374 29625</a>
+            </div>
+
+            <!-- Secretary -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/Secretary.jpeg') }}" alt="M. Sadham Hussain - Secretary" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Secretary</div>
+                <div class="coordinator-name">M. SADHAM HUSSAIN</div>
+                <a href="tel:8825636536" class="coordinator-phone">📞 88256 36536</a>
+            </div>
+
+            <!-- Joint Treasurer -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/Joint Treasurer.jpeg') }}" alt="Abdul Halik M.A - Joint Treasurer" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Joint Treasurer</div>
+                <div class="coordinator-name">ABDUL HALIK M.A</div>
+                <a href="tel:9500025802" class="coordinator-phone">📞 95000 25802</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="container" style="padding-bottom: 5rem;">
+        <div class="glass-card" style="max-width: 1000px; margin: 0 auto; padding: 3rem; border-color: var(--border-cyan);">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="mono-tag" style="margin-bottom: 0.5rem; display: block;">REACH OUT TO US</span>
+                <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; letter-spacing: 2px;">CONTACT US</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Get in touch with any of our office bearers for queries about TESSERACT '26.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">👑</div>
+                    <div class="contact-info">
+                        <div class="contact-role">President</div>
+                        <div class="contact-name-small">R. RATHISH</div>
+                        <a href="tel:8925046648">+91 89250 46648</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⭐</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Vice President</div>
+                        <div class="contact-name-small">NAISANA H</div>
+                        <a href="tel:9345543114">+91 93455 43114</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Treasurer</div>
+                        <div class="contact-name-small">M. MOHAMMED AARIF</div>
+                        <a href="tel:8637429625">+91 86374 29625</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📋</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Secretary</div>
+                        <div class="contact-name-small">M. SADHAM HUSSAIN</div>
+                        <a href="tel:8825636536">+91 88256 36536</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🤝</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Joint Treasurer</div>
+                        <div class="contact-name-small">ABDUL HALIK M.A</div>
+                        <a href="tel:9500025802">+91 95000 25802</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏛️</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Venue</div>
+                        <div class="contact-name-small">ECE Department</div>
+                        <a href="https://maps.google.com/?q=Aalim+Muhammed+Salegh+College+of+Engineering" target="_blank">Aalim Muhammed Salegh College of Engineering</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(4, 6, 14, 0.95); border-top: 1px solid var(--border-color); padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
+        <div class="container" style="max-width: 900px;">
+            <div class="font-mono" style="font-size: 1.3rem; color: #fff; letter-spacing: 3px; margin-bottom: 0.5rem;">TESSERACT ’26</div>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+                Department of Electronics and Communication Engineering<br>
+                Aalim Muhammed Salegh College of Engineering
+            </p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);" class="font-mono">
+                EVENT DATE: 12 SEPTEMBER 2026 | NATIONAL LEVEL SYMPOSIUM
+            </p>
+            <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim);" class="font-mono">
+                &copy; 2026 TESSERACT ’26. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Event Detail & Poster Gallery Modal Container -->
+    <div id="landing-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; padding: 1rem;">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        let landingEvents = [];
+        let modalEvent = null;
+        let modalPosterIndex = 0;
+
+        // Fetch active events for landing page grid
+        fetch('/api/events')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.events) {
+                    landingEvents = data.events;
+                    const grid = document.getElementById('landing-events-grid');
+                    grid.innerHTML = '';
+                    data.events.forEach(evt => {
+                        const prizesHtml = evt.prizes.map(p => `<span class="prize-badge">${p.rank}: ${p.amount}</span>`).join(' ');
+                        const posterList = (evt.poster_urls && evt.poster_urls.length > 0) ? evt.poster_urls : (evt.poster_url ? [evt.poster_url] : []);
+                        
+                        let posterHtml = '';
+                        if (posterList.length > 0) {
+                            const primaryPoster = posterList[0];
+                            const countBadge = posterList.length > 1
+                                ? `<span style="position: absolute; top: 8px; left: 8px; background: rgba(0, 243, 255, 0.95); color: #050813; font-weight: 800; font-size: 0.68rem; padding: 2px 7px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.6);">📸 ${posterList.length} POSTERS</span>`
+                                : '';
+                            posterHtml = `
+                                <div style="margin-bottom: 0.75rem; border-radius: var(--radius-sm); overflow: hidden; max-height: 180px; border: 1px solid var(--border-cyan); position: relative; background: #000; cursor: pointer;" onclick="openLandingEventModal('${evt.id}')">
+                                    <img src="${encodeURI(primaryPoster)}" alt="${evt.title} Poster" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                                    ${countBadge}
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); openLandingEventModal('${evt.id}')" style="position: absolute; bottom: 8px; right: 8px; font-size: 0.7rem; padding: 3px 8px; background: rgba(5,8,19,0.88);">
+                                        🖼️ View Poster (${posterList.length})
+                                    </button>
+                                </div>
+                            `;
+                        }
+
+                        const descText = evt.description ? `<p style="font-size: 0.85rem; color: #cbd5e1; margin: 0.5rem 0; line-height: 1.4;">${evt.description}</p>` : '';
+
+                        const card = document.createElement('div');
+                        card.className = 'event-card';
+                        card.innerHTML = `
+                            <div>
+                                ${posterHtml}
+                                <div class="event-category-tag">${evt.category}</div>
+                                <div class="event-title">${evt.title}</div>
+                                <div class="event-venue">📍 ${evt.venue} &bull; 👥 Max ${evt.max_team_size || 4}</div>
+                                ${descText}
+                                <div class="event-prizes" style="margin-top: 0.75rem;">
+                                    <div class="prize-title">Prizes / Category</div>
+                                    <div class="prize-list">${prizesHtml}</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 1rem;">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="openLandingEventModal('${evt.id}')" style="width: 100%; font-size: 0.8rem; padding: 0.5rem;">
+                                    📜 View Details & Posters
+                                </button>
+                                ${posterList.length > 0 ? `<button type="button" class="btn-download" onclick="downloadEventPoster('${evt.id}', '${encodeURI(posterList[0])}'  )" style="width: 100%;">
+                                    ⬇ DOWNLOAD POSTER
+                                </button>` : ''}
+                                <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="width: 100%; font-size: 0.85rem; padding: 0.65rem; text-align: center; display: block; font-weight: 700;">
+                                    REGISTER IN GOOGLE FORM ↗
+                                </a>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                }
+            })
+            .catch(err => console.error('Error fetching events:', err));
+
+        function openLandingEventModal(eventId) {
+            const evt = landingEvents.find(e => e.id === eventId);
+            if (!evt) return;
+            modalEvent = evt;
+            modalPosterIndex = 0;
+            renderLandingModal();
+        }
+
+        function renderLandingModal() {
+            const modal = document.getElementById('landing-modal');
+            if (!modalEvent) return;
+
+            const evt = modalEvent;
+            const posters = (evt.poster_urls && evt.poster_urls.length > 0) ? evt.poster_urls : (evt.poster_url ? [evt.poster_url] : []);
+            const totalPosters = posters.length;
+            const currentImg = totalPosters > 0 ? posters[modalPosterIndex] : null;
+
+            const prizesHtml = evt.prizes.map(p => `<span class="prize-badge" style="font-size: 0.85rem; padding: 4px 10px;">${p.rank}: ${p.amount}</span>`).join(' ');
+
+            let postersGalleryHtml = '';
+            if (totalPosters > 0) {
+                postersGalleryHtml = `
+                    <div style="position: relative; display: flex; justify-content: center; align-items: center; min-height: 280px; background: rgba(0,0,0,0.6); border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 1rem;">
+                        ${totalPosters > 1 ? `
+                            <button type="button" onclick="prevModalPoster()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(5,8,19,0.85); color: var(--primary-cyan); border: 1px solid var(--primary-cyan); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">&#10094;</button>
+                            <button type="button" onclick="nextModalPoster()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(5,8,19,0.85); color: var(--primary-cyan); border: 1px solid var(--primary-cyan); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">&#10095;</button>
+                        ` : ''}
+                        <img src="${encodeURI(currentImg)}" alt="${evt.title} Poster" style="max-width: 100%; max-height: 50vh; object-fit: contain; display: block;">
+                    </div>
+                    ${totalPosters > 1 ? `
+                        <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 1.25rem;">
+                            ${posters.map((p, idx) => `
+                                <div onclick="setModalPosterIndex(${idx})" style="cursor: pointer; width: 55px; height: 55px; border-radius: 4px; overflow: hidden; border: 2px solid ${idx === modalPosterIndex ? 'var(--primary-cyan)' : 'rgba(255,255,255,0.2)'}; opacity: ${idx === modalPosterIndex ? '1' : '0.6'};">
+                                    <img src="${encodeURI(p)}" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            modal.innerHTML = `
+                <div class="glass-card" onclick="event.stopPropagation()" style="max-width: 780px; width: 100%; max-height: 92vh; overflow-y: auto; border-color: var(--primary-cyan); padding: 1.8rem; position: relative;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                        <div>
+                            <span class="event-category-tag">${evt.category}</span>
+                            <h2 style="color: #fff; font-family: var(--font-heading); font-size: 1.8rem; margin-top: 4px;">${evt.title}</h2>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">📍 Venue: <strong>${evt.venue}</strong> &nbsp;|&nbsp; 👥 Max Team: <strong>${evt.max_team_size || 4} Members</strong></span>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="closeLandingModal()" style="font-size: 1rem; padding: 4px 10px;">✕ Close</button>
+                    </div>
+
+                    ${postersGalleryHtml}
+
+                    <div class="review-section" style="margin-bottom: 1rem; text-align: left;">
+                        <div class="review-section-title">WHAT YOU NEED TO DO / DESCRIPTION</div>
+                        <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; margin-top: 6px;">
+                            ${evt.description || 'Participate and demonstrate your skills in this symposium event.'}
+                        </p>
+                    </div>
+
+                    ${evt.rules ? `
+                        <div class="review-section" style="margin-bottom: 1rem; text-align: left;">
+                            <div class="review-section-title">RULES & GUIDELINES</div>
+                            <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-top: 6px;">
+                                ${evt.rules}
+                            </p>
+                        </div>
+                    ` : ''}
+
+                    <div class="review-section" style="margin-bottom: 1.5rem; text-align: left;">
+                        <div class="review-section-title">PRIZES & RECOGNITION</div>
+                        <div style="margin-top: 8px;">${prizesHtml}</div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <button type="button" class="btn btn-secondary" onclick="closeLandingModal()">
+                            &larr; Back to Events
+                        </button>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            ${totalPosters > 0 ? `<button type="button" class="btn-download" onclick="downloadEventPoster('${evt.id}', '${encodeURI(posters[modalPosterIndex])}')">⬇ DOWNLOAD POSTER</button>` : ''}
+                            <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="font-size: 1rem; padding: 0.8rem 2rem; font-weight: 700;">
+                                REGISTER IN GOOGLE FORM ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+            modal.onclick = closeLandingModal;
+        }
+
+        function closeLandingModal() {
+            document.getElementById('landing-modal').style.display = 'none';
+        }
+
+        function downloadEventPoster(eventId, posterUrl) {
+            const a = document.createElement('a');
+            a.href = posterUrl;
+            a.download = eventId + '_poster.jpg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function prevModalPoster() {
+            if (!modalEvent) return;
+            const posters = modalEvent.poster_urls || [modalEvent.poster_url];
+            modalPosterIndex = (modalPosterIndex - 1 + posters.length) % posters.length;
+            renderLandingModal();
+        }
+
+        function nextModalPoster() {
+            if (!modalEvent) return;
+            const posters = modalEvent.poster_urls || [modalEvent.poster_url];
+            modalPosterIndex = (modalPosterIndex + 1) % posters.length;
+            renderLandingModal();
+        }
+
+        function setModalPosterIndex(idx) {
+            modalPosterIndex = idx;
+            renderLandingModal();
+        }
+
+        // 3D Floating Wireframe Cubes Rendering on Canvas
+        const canvas = document.getElementById('tesseract-bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 3D Cube Vertices & Edges
+        const vertices = [
+            [-1,-1,-1], [1,-1,-1], [1,1,-1], [-1,1,-1],
+            [-1,-1,1],  [1,-1,1],  [1,1,1],  [-1,1,1],
+            [-0.5,-0.5,-0.5], [0.5,-0.5,-0.5], [0.5,0.5,-0.5], [-0.5,0.5,-0.5],
+            [-0.5,-0.5,0.5],  [0.5,-0.5,0.5],  [0.5,0.5,0.5],  [-0.5,0.5,0.5]
+        ];
+
+        const edges = [
+            [0,1],[1,2],[2,3],[3,0], [4,5],[5,6],[6,7],[7,4], [0,4],[1,5],[2,6],[3,7],
+            [8,9],[9,10],[10,11],[11,8], [12,13],[13,14],[14,15],[15,12], [8,12],[9,13],[10,14],[11,15],
+            [0,8],[1,9],[2,10],[3,11], [4,12],[5,13],[6,14],[7,15]
+        ];
+
+        let angleX = 0;
+        let angleY = 0;
+
+        function project(point, scale, offsetX, offsetY) {
+            let radX = angleX;
+            let radY = angleY;
+
+            let x = point[0];
+            let y = point[1];
+            let z = point[2];
+
+            // Rotate Y
+            let x1 = x * Math.cos(radY) + z * Math.sin(radY);
+            let z1 = -x * Math.sin(radY) + z * Math.cos(radY);
+
+            // Rotate X
+            let y2 = y * Math.cos(radX) - z1 * Math.sin(radX);
+            let z2 = y * Math.sin(radX) + z1 * Math.cos(radX);
+
+            let distance = 3;
+            let fov = scale / (distance + z2);
+
+            return [x1 * fov + offsetX, y2 * fov + offsetY];
+        }
+
+        function drawTesseract() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            angleX += 0.004;
+            angleY += 0.006;
+
+            ctx.strokeStyle = 'rgba(0, 243, 255, 0.25)';
+            ctx.lineWidth = 1.5;
+
+            // Draw left background tesseract
+            let leftP = vertices.map(v => project(v, 300, canvas.width * 0.15, canvas.height * 0.45));
+            edges.forEach(e => {
+                ctx.beginPath();
+                ctx.moveTo(leftP[e[0]][0], leftP[e[0]][1]);
+                ctx.lineTo(leftP[e[1]][0], leftP[e[1]][1]);
+                ctx.stroke();
+            });
+
+            // Draw right background tesseract
+            let rightP = vertices.map(v => project(v, 380, canvas.width * 0.85, canvas.height * 0.55));
+            edges.forEach(e => {
+                ctx.beginPath();
+                ctx.moveTo(rightP[e[0]][0], rightP[e[0]][1]);
+                ctx.lineTo(rightP[e[1]][0], rightP[e[1]][1]);
+                ctx.stroke();
+            });
+
+            requestAnimationFrame(drawTesseract);
+        }
+
+        drawTesseract();
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Guidelines — TESSERACT ’26</title>
+    <meta name="description" content="Explore all 13 symposium events, cash prizes, competition rules, and register via the official Google Form for TESSERACT ’26.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <div class="brand-icon">T</div>
+                <div>
+                    <span class="brand-title">TESSERACT ’26</span>
+                    <span class="brand-sub">ECE Dept | AMS Engineering College</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/register" class="nav-link active">Events & Rules</a></li>
+                <li><a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="padding: 0.6rem 1.4rem;">REGISTER NOW ↗</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container" style="max-width: 1100px; padding-top: 2rem; padding-bottom: 5rem;">
+
+        <!-- HEADER -->
+        <div class="reg-header" style="text-align: center; margin-bottom: 2rem;">
+            <span class="mono-tag" style="margin-bottom: 0.75rem;">SYMPOSIUM EVENTS & GUIDELINES</span>
+            <h1 class="reg-title gradient-text" style="font-size: 2.6rem;">EXPLORE EVENTS & RULES</h1>
+            <p class="reg-subtitle" style="max-width: 750px; margin: 0 auto; color: var(--text-muted); font-size: 1rem;">
+                Browse technical challenges, non-technical competitions, and stalls. Review rules and cash prize structures, then submit your entry via our official Google Form.
+            </p>
+        </div>
+
+        <!-- GOOGLE FORM REGISTRATION NOTICE BANNER -->
+        <div class="glass-card" style="border: 2px solid var(--primary-cyan); background: rgba(0, 243, 255, 0.05); padding: 1.5rem 2rem; margin-bottom: 2.5rem; text-align: center; box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);">
+            <div style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                📝 OFFICIAL REGISTRATION IS OPEN VIA GOOGLE FORM
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1.25rem;">
+                Select your events, review the guidelines below, and click the button to complete your registration.
+            </p>
+            <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="font-size: 1.05rem; padding: 0.85rem 2.5rem; font-weight: 800; display: inline-block;">
+                👉 OPEN OFFICIAL GOOGLE REGISTRATION FORM ↗
+            </a>
+        </div>
+
+        <!-- CATEGORY TABS & SEARCH -->
+        <div class="category-tabs" style="margin-bottom: 1.5rem;">
+            <button class="tab-btn active" data-category="ALL" onclick="filterCategory('ALL')">ALL EVENTS</button>
+            <button class="tab-btn" data-category="TECHNICAL EVENTS" onclick="filterCategory('TECHNICAL EVENTS')">TECHNICAL EVENTS</button>
+            <button class="tab-btn" data-category="NON-TECHNICAL EVENTS" onclick="filterCategory('NON-TECHNICAL EVENTS')">NON-TECHNICAL EVENTS</button>
+            <button class="tab-btn" data-category="STALLS & EXHIBITS" onclick="filterCategory('STALLS & EXHIBITS')">STALLS & EXHIBITS</button>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container" style="margin-bottom: 2.5rem;">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="event-search" class="search-input" placeholder="Search event by name, venue, or keywords..." oninput="handleEventSearch(this.value)">
+        </div>
+
+        <!-- Events Cards Grid -->
+        <div class="events-grid" id="events-selection-grid">
+            <div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 3rem;">
+                Loading events from live database...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(4, 6, 14, 0.95); border-top: 1px solid var(--border-color); padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
+        <div class="container" style="max-width: 900px;">
+            <div class="font-mono" style="font-size: 1.3rem; color: #fff; letter-spacing: 3px; margin-bottom: 0.5rem;">TESSERACT ’26</div>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+                Department of Electronics and Communication Engineering<br>
+                Aalim Muhammed Salegh College of Engineering
+            </p>
+            <p style="font-size: 0.8rem; color: var(--text-dim);" class="font-mono">
+                EVENT DATE: 12 SEPTEMBER 2026 | NATIONAL LEVEL SYMPOSIUM
+            </p>
+            <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-dim);" class="font-mono">
+                &copy; 2026 TESSERACT ’26. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Event Detail & Poster Gallery Modal Container -->
+    <div id="poster-gallery-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; padding: 1rem;">
+    </div>
+
+    <!-- App Scripts -->
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+</body>
+</html>
