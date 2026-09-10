@@ -36,15 +36,21 @@ class TestTesseractRegistrationSystem(unittest.TestCase):
         self.assertEqual(men_on_ramp['prizes'][0]['amount'], '₹5,000')
         self.assertEqual(men_on_ramp['prizes'][1]['amount'], '₹3,000')
 
-        # 2. IPL Auction check (STRICT RULE: ₹1,000 ONLY, NO ₹21,000 or ₹500)
+        # 2. IPL Auction check
         ipl_auction = next(e for e in events if e['id'] == 'ipl-auction')
-        self.assertEqual(len(ipl_auction['prizes']), 1, "IPL Auction must have ONLY 1 prize")
+        self.assertEqual(len(ipl_auction['prizes']), 2, "IPL Auction must have 2 prizes")
         self.assertEqual(ipl_auction['prizes'][0]['amount'], '₹1,000')
+        self.assertEqual(ipl_auction['prizes'][1]['amount'], '₹500')
 
-        # Ensure strings '21,000' and '500' are NOT in IPL Auction prize list
-        ipl_json = json.dumps(ipl_auction)
-        self.assertNotIn('21,000', ipl_json)
-        self.assertNotIn('₹500', ipl_json)
+        # 3. Single-prize events must not contain a fake second prize
+        console = next(e for e in events if e['id'] == 'console')
+        self.assertEqual(console['prizes'], [{'rank': '1st Prize', 'amount': '₹500'}])
+
+        # 4. E-Sports must contain only Free Fire and FC categories
+        esports = next(e for e in events if e['id'] == 'e-sports')
+        self.assertEqual([prize['rank'] for prize in esports['prizes']], [
+            'Free Fire - 1st Prize', 'Free Fire - 2nd Prize', 'FC - 1st Prize'
+        ])
 
         # 3. Check no event timings or coordinator contacts anywhere in DB seed
         for evt in events:

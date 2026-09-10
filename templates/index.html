@@ -69,6 +69,9 @@
             <a href="https://forms.gle/1vzAsMQD7SyqTis87" target="_blank" rel="noopener noreferrer" class="btn-cyan-solid" style="font-size: 1rem; padding: 0.9rem 2.5rem;">
                 REGISTER VIA GOOGLE FORM ↗
             </a>
+            <a href="https://www.instagram.com/x_tesseract?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="btn-outline-dark" style="font-size: 1rem; padding: 0.9rem 2rem;">
+                INSTAGRAM ↗
+            </a>
             <a href="#featured-events" class="btn-outline-dark" style="font-size: 1rem; padding: 0.9rem 2rem;">
                 EXPLORE EVENTS & RULES ↓
             </a>
@@ -116,7 +119,7 @@
     <section id="committee" class="container" style="padding-bottom: 5rem;">
         <div style="text-align: center; margin-bottom: 3rem;">
             <span class="mono-tag" style="margin-bottom: 0.75rem; display: block;">ECE DEPARTMENT STUDENT ASSOCIATION</span>
-            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; color: #fff; margin-bottom: 0.75rem;">OFFICE BEARERS</h2>
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; color: #fff; margin-bottom: 0.75rem;">SYMPOSIUM COORDINATORS</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">The dedicated student leaders organizing TESSERACT '26 — National Level Symposium.</p>
         </div>
 
@@ -141,16 +144,6 @@
                 <a href="tel:9345543114" class="coordinator-phone">📞 93455 43114</a>
             </div>
 
-            <!-- Treasurer -->
-            <div class="coordinator-card">
-                <div class="coordinator-avatar">
-                    <img src="{{ url_for('static', filename='images/committee/Treasurer.jpeg') }}" alt="M. Mohammed Aarif - Treasurer" loading="lazy">
-                </div>
-                <div class="coordinator-designation">Treasurer</div>
-                <div class="coordinator-name">M. MOHAMMED AARIF</div>
-                <a href="tel:8637429625" class="coordinator-phone">📞 86374 29625</a>
-            </div>
-
             <!-- Secretary -->
             <div class="coordinator-card">
                 <div class="coordinator-avatar">
@@ -159,6 +152,26 @@
                 <div class="coordinator-designation">Secretary</div>
                 <div class="coordinator-name">M. SADHAM HUSSAIN</div>
                 <a href="tel:8825636536" class="coordinator-phone">📞 88256 36536</a>
+            </div>
+
+            <!-- Joint Secretary -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/joint secretary.jpeg') }}" alt="Mohammed Afrid A - Joint Secretary" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Joint Secretary</div>
+                <div class="coordinator-name">MOHAMMED AFRID A</div>
+                <a href="tel:8190978051" class="coordinator-phone">📞 81909 78051</a>
+            </div>
+
+            <!-- Treasurer -->
+            <div class="coordinator-card">
+                <div class="coordinator-avatar">
+                    <img src="{{ url_for('static', filename='images/committee/Treasurer.jpeg') }}" alt="M. Mohammed Aarif - Treasurer" loading="lazy">
+                </div>
+                <div class="coordinator-designation">Treasurer</div>
+                <div class="coordinator-name">M. MOHAMMED AARIF</div>
+                <a href="tel:8637429625" class="coordinator-phone">📞 86374 29625</a>
             </div>
 
             <!-- Joint Treasurer -->
@@ -199,19 +212,27 @@
                     </div>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <div class="contact-info">
-                        <div class="contact-role">Treasurer</div>
-                        <div class="contact-name-small">M. MOHAMMED AARIF</div>
-                        <a href="tel:8637429625">+91 86374 29625</a>
-                    </div>
-                </div>
-                <div class="contact-item">
                     <div class="contact-icon">📋</div>
                     <div class="contact-info">
                         <div class="contact-role">Secretary</div>
                         <div class="contact-name-small">M. SADHAM HUSSAIN</div>
                         <a href="tel:8825636536">+91 88256 36536</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📝</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Joint Secretary</div>
+                        <div class="contact-name-small">MOHAMMED AFRID A</div>
+                        <a href="tel:8190978051">+91 81909 78051</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-info">
+                        <div class="contact-role">Treasurer</div>
+                        <div class="contact-name-small">M. MOHAMMED AARIF</div>
+                        <a href="tel:8637429625">+91 86374 29625</a>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -222,7 +243,7 @@
                         <a href="tel:9500025802">+91 95000 25802</a>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item venue-contact">
                     <div class="contact-icon">🏛️</div>
                     <div class="contact-info">
                         <div class="contact-role">Venue</div>
@@ -269,8 +290,17 @@
                     landingEvents = data.events;
                     const grid = document.getElementById('landing-events-grid');
                     grid.innerHTML = '';
+                    let previousCategory = '';
                     data.events.forEach(evt => {
-                        const prizesHtml = evt.prizes.map(p => `<span class="prize-badge">${p.rank}: ${p.amount}</span>`).join(' ');
+                        if (evt.category !== previousCategory) {
+                            const categoryHeading = document.createElement('div');
+                            categoryHeading.className = 'event-category-heading';
+                            categoryHeading.innerHTML = `<span class="mono-tag">${evt.category}</span>`;
+                            grid.appendChild(categoryHeading);
+                            previousCategory = evt.category;
+                        }
+
+                        const prizesHtml = renderLandingPrizeMarkup(evt.prizes);
                         const posterList = (evt.poster_urls && evt.poster_urls.length > 0) ? evt.poster_urls : (evt.poster_url ? [evt.poster_url] : []);
                         
                         let posterHtml = '';
@@ -324,6 +354,31 @@
             })
             .catch(err => console.error('Error fetching events:', err));
 
+        function renderLandingPrizeMarkup(prizes) {
+            const groups = [];
+            prizes.forEach(prize => {
+                const separatorIndex = prize.rank.indexOf(' - ');
+                const groupName = separatorIndex > -1 ? prize.rank.slice(0, separatorIndex) : '';
+                const rank = separatorIndex > -1 ? prize.rank.slice(separatorIndex + 3) : prize.rank;
+                let group = groups.find(item => item.name === groupName);
+                if (!group) {
+                    group = { name: groupName, prizes: [] };
+                    groups.push(group);
+                }
+                group.prizes.push({ rank, amount: prize.amount });
+            });
+
+            return groups.map(group => `
+                ${group.name ? `<div class="prize-group-heading">${group.name}</div>` : ''}
+                <div class="prize-list">
+                    ${group.prizes.map(prize => {
+                        const icon = prize.rank.toLowerCase().includes('1st') ? '🥇' : (prize.rank.toLowerCase().includes('2nd') || prize.rank.toLowerCase().includes('runner') ? '🥈' : '🏆');
+                        return `<span class="prize-badge"><span class="prize-rank">${icon} ${prize.rank}</span><span class="prize-amount">${prize.amount}</span></span>`;
+                    }).join('')}
+                </div>
+            `).join('');
+        }
+
         function openLandingEventModal(eventId) {
             const evt = landingEvents.find(e => e.id === eventId);
             if (!evt) return;
@@ -341,7 +396,7 @@
             const totalPosters = posters.length;
             const currentImg = totalPosters > 0 ? posters[modalPosterIndex] : null;
 
-            const prizesHtml = evt.prizes.map(p => `<span class="prize-badge" style="font-size: 0.85rem; padding: 4px 10px;">${p.rank}: ${p.amount}</span>`).join(' ');
+            const prizesHtml = renderLandingPrizeMarkup(evt.prizes);
 
             let postersGalleryHtml = '';
             if (totalPosters > 0) {

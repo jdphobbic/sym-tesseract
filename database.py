@@ -100,8 +100,8 @@ def seed_events(conn):
             "description": "Test your analytical skills and circuit acumen. Locate, identify, and troubleshoot intentional hardware faults and anomalies in electronic and logic circuits.",
             "rules": "Max 3 members per team. Round 1: Written screening on circuit concepts. Round 2: Hands-on debugging on breadboards with multimeters & components. Speed and proper circuit operation determine the winner.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹3,000"},
-                {"rank": "2nd Prize", "amount": "₹2,000"}
+                {"rank": "1st Prize", "amount": "₹2,000"},
+                {"rank": "2nd Prize", "amount": "₹1,000"}
             ]),
             "registration_open": 1,
             "max_team_size": 3,
@@ -119,8 +119,8 @@ def seed_events(conn):
             "description": "A battle of technical wit, rhetoric, and critical reasoning. Debate on emerging technologies, AI impact, and engineering controversies with logical arguments.",
             "rules": "2 members per team. Debate topics provided on the spot with prep time. Structured rounds of opening statements, rebuttals, and jury questions.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹3,000"},
-                {"rank": "2nd Prize", "amount": "₹2,000"}
+                {"rank": "1st Prize", "amount": "₹2,000"},
+                {"rank": "2nd Prize", "amount": "₹1,000"}
             ]),
             "registration_open": 1,
             "max_team_size": 2,
@@ -138,8 +138,8 @@ def seed_events(conn):
             "description": "Showcase your cutting-edge working hardware prototypes, IoT devices, robotics systems, embedded systems, and software engineering projects.",
             "rules": "Up to 4 members per team. Working model demonstration and project summary required. Judged on innovation, practical feasibility, and presentation clarity.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹3,000"},
-                {"rank": "2nd Prize", "amount": "₹2,000"}
+                {"rank": "1st Prize", "amount": "₹2,000"},
+                {"rank": "2nd Prize", "amount": "₹1,000"}
             ]),
             "registration_open": 1,
             "max_team_size": 4,
@@ -160,8 +160,8 @@ def seed_events(conn):
             "description": "Present original research papers, innovative concepts, and analytical findings in front of an expert panel of academicians.",
             "rules": "Up to 3 members per team. PPT presentation (8 mins presentation + 2 mins Q&A). Standard IEEE format encouraged.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹3,000"},
-                {"rank": "2nd Prize", "amount": "₹2,000"}
+                {"rank": "1st Prize", "amount": "₹2,000"},
+                {"rank": "2nd Prize", "amount": "₹1,000"}
             ]),
             "registration_open": 1,
             "max_team_size": 3,
@@ -182,8 +182,8 @@ def seed_events(conn):
             "description": "High-energy multi-round quiz testing your depth in electronics, computing, engineering milestones, science, and global tech trivia.",
             "rules": "2 members per team. Written preliminary screening round followed by live on-stage finals with buzzer and rapid-fire rounds.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹3,000"},
-                {"rank": "2nd Prize", "amount": "₹2,000"}
+                {"rank": "1st Prize", "amount": "₹2,000"},
+                {"rank": "2nd Prize", "amount": "₹1,000"}
             ]),
             "registration_open": 1,
             "max_team_size": 2,
@@ -223,7 +223,8 @@ def seed_events(conn):
             "description": "Strategic cricket squad bidding war. Manage your allocated virtual auction purse to build the ultimate balanced IPL team.",
             "rules": "Up to 3 members per team. Auction guidelines, player ratings, and purse limits announced at event start.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹1,000"}
+                {"rank": "1st Prize", "amount": "₹1,000"},
+                {"rank": "2nd Prize", "amount": "₹500"}
             ]),
             "registration_open": 1,
             "max_team_size": 3,
@@ -240,14 +241,14 @@ def seed_events(conn):
             "description": "Spontaneous acting and performance challenge. Switch roles, genres, accents, and emotions instantaneously when the judges switch channels!",
             "rules": "Up to 5 members per team. Adaptability, humor, and team coordination are prime judging factors.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹700"},
-                {"rank": "2nd Prize", "amount": "₹400"}
+                {"rank": "Winner", "amount": "₹700"},
+                {"rank": "Runner", "amount": "₹300"}
             ]),
             "registration_open": 1,
             "max_team_size": 5,
             "custom_fields": json.dumps([]),
             "poster_url": json.dumps([
-                "/static/images/posters/channel surfing.jpeg"
+                "/static/images/posters/chanell surfing.jpeg"
             ])
         },
         {
@@ -258,8 +259,8 @@ def seed_events(conn):
             "description": "Visual clue hunt! Connect multiple unrelated images, movie stills, and audio hints to discover hidden tech terms, titles, and words.",
             "rules": "2 members per team. Multi-round visual clue elimination.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹700"},
-                {"rank": "2nd Prize", "amount": "₹400"}
+                {"rank": "Winner", "amount": "₹700"},
+                {"rank": "Runner", "amount": "₹300"}
             ]),
             "registration_open": 1,
             "max_team_size": 2,
@@ -277,7 +278,7 @@ def seed_events(conn):
             "rules": "2 members per team. Timed cipher solving across designated checkpoints.",
             "prizes": json.dumps([
                 {"rank": "1st Prize", "amount": "₹700"},
-                {"rank": "2nd Prize", "amount": "₹400"}
+                {"rank": "2nd Prize", "amount": "₹300"}
             ]),
             "registration_open": 1,
             "max_team_size": 2,
@@ -291,13 +292,12 @@ def seed_events(conn):
             "title": "E-Sports",
             "category": "NON-TECHNICAL EVENTS",
             "venue": "S201 – ECE Dept",
-            "description": "High-intensity mobile gaming tournament featuring Free Fire, FC Football, and E-Football showdowns.",
+            "description": "High-intensity mobile gaming tournament featuring Free Fire and FC showdowns.",
             "rules": "Squad and solo tournament brackets. Standard competition rules enforced.",
             "prizes": json.dumps([
                 {"rank": "Free Fire - 1st Prize", "amount": "₹700"},
                 {"rank": "Free Fire - 2nd Prize", "amount": "₹400"},
-                {"rank": "FC Football - 1st Prize", "amount": "₹500"},
-                {"rank": "E-Football - 1st Prize", "amount": "₹500"}
+                {"rank": "FC - 1st Prize", "amount": "₹500"}
             ]),
             "registration_open": 1,
             "max_team_size": 4,
@@ -307,7 +307,7 @@ def seed_events(conn):
                     "id": "esports_game",
                     "label": "Game Category",
                     "type": "select",
-                    "options": ["Free Fire", "FC Football", "E-Football"],
+                    "options": ["Free Fire", "FC"],
                     "required": True
                 }
             ]),
@@ -323,8 +323,7 @@ def seed_events(conn):
             "description": "Head-to-head console tournament on controllers with instant knockout arcade matches.",
             "rules": "Individual 1v1 knockout bracket matches.",
             "prizes": json.dumps([
-                {"rank": "1st Prize", "amount": "₹500"},
-                {"rank": "2nd Prize", "amount": "₹300"}
+                {"rank": "1st Prize", "amount": "₹500"}
             ]),
             "registration_open": 1,
             "max_team_size": 1,

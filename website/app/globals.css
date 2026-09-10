@@ -1091,3 +1091,56 @@ input:checked + .slider:before {
   .ticket-header { background: #f0f0f0 !important; color: #000 !important; }
   .ticket-reg-id { color: #000 !important; text-shadow: none !important; }
 }
+
+/* Next.js page composition */
+.hero { padding-top: 3.5rem; padding-bottom: 4rem; text-align: center; position: relative; }
+.hero > .mono-tag { margin-bottom: 2rem; }
+.hero-logo-img { margin-bottom: 1.5rem; }
+.hero-tagline { font-size: 1rem; color: #cbd5e1; letter-spacing: 4px; margin-bottom: 2rem; }
+.hero-meta { display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; color: #94a3b8; }
+.hero-meta strong { font-size: 1.4rem; color: #fff; letter-spacing: 2px; }
+.hero-meta span { font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase; }
+.hero-actions { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.section { padding-top: 3rem; padding-bottom: 5rem; }
+.section-heading { text-align: center; margin-bottom: 3rem; }
+.section-heading h2 { font-family: var(--font-heading); font-size: 2.5rem; letter-spacing: 2px; color: #fff; }
+.section-heading p { color: var(--text-muted); font-size: .95rem; max-width: 700px; margin: 0 auto; }
+.centered-card, .contact-card { max-width: 1000px; margin: 0 auto; text-align: center; border-color: var(--border-cyan); }
+.centered-card h3 { font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: .5rem 0 1.5rem; }
+.centered-card p { color: var(--text-muted); line-height: 1.8; max-width: 800px; margin: 0 auto; }
+.event-grid-item { display: contents; }
+.poster-preview { width: 100%; height: 180px; margin-bottom: .75rem; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-cyan); position: relative; background: #000; cursor: pointer; padding: 0; }
+.poster-preview img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.poster-preview span { position: absolute; top: 8px; left: 8px; background: rgba(0,243,255,.95); color: #050813; font-weight: 800; font-size: .68rem; padding: 2px 7px; border-radius: 12px; }
+.poster-preview b { position: absolute; bottom: 8px; right: 8px; background: rgba(5,8,19,.88); color: #fff; font: .7rem var(--font-mono); padding: 3px 8px; }
+.event-description { font-size: .88rem; color: #cbd5e1; margin: .6rem 0; line-height: 1.45; }
+.card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 1.25rem; }
+.card-actions .btn-cyan-solid { width: 100%; font-size: .85rem; padding: .65rem; text-align: center; }
+.site-modal { position: fixed; inset: 0; z-index: 3000; display: flex; justify-content: center; align-items: center; padding: 1rem; background: rgba(0,0,0,.92); backdrop-filter: blur(12px); }
+.modal-card { max-width: 800px; width: 100%; max-height: 94vh; overflow-y: auto; border-color: var(--primary-cyan); padding: 1.8rem; }
+.modal-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: .75rem; }
+.modal-heading h2 { color: #fff; font-family: var(--font-heading); font-size: 1.8rem; margin-top: 4px; }
+.modal-meta { font-size: .85rem; color: var(--text-muted); }
+.modal-poster { position: relative; display: flex; justify-content: center; align-items: center; min-height: 280px; background: rgba(0,0,0,.6); border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; margin-bottom: 1rem; }
+.modal-poster img { max-width: 100%; max-height: 52vh; object-fit: contain; display: block; }
+.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; background: rgba(5,8,19,.85); color: var(--primary-cyan); border: 1px solid var(--primary-cyan); border-radius: 50%; width: 44px; height: 44px; font-size: 1.8rem; cursor: pointer; }
+.gallery-arrow.left { left: 12px; }
+.gallery-arrow.right { right: 12px; }
+.poster-thumbs { display: flex; gap: 8px; justify-content: center; margin-bottom: 1.25rem; }
+.poster-thumbs button { cursor: pointer; width: 55px; height: 55px; padding: 0; border-radius: 4px; overflow: hidden; border: 2px solid rgba(255,255,255,.25); opacity: .55; background: none; }
+.poster-thumbs button.selected { border-color: var(--primary-cyan); opacity: 1; }
+.poster-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.review-section p { color: #e2e8f0; font-size: .95rem; line-height: 1.6; margin-top: 6px; }
+.modal-actions { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem; }
+.events-page { max-width: 1100px; padding-top: 2rem; padding-bottom: 5rem; }
+.registration-banner { border: 2px solid var(--primary-cyan); background: rgba(0,243,255,.05); padding: 1.5rem 2rem; margin-bottom: 2.5rem; text-align: center; box-shadow: 0 0 25px rgba(0,243,255,.15); }
+.registration-banner strong { display: block; font-size: 1.15rem; color: #fff; margin-bottom: .5rem; letter-spacing: 1px; }
+.registration-banner p { color: #cbd5e1; font-size: .95rem; margin-bottom: 1.25rem; }
+.controlled-tabs { margin-bottom: 1.5rem; }
+
+@media (max-width: 768px) {
+  .hero-tagline { letter-spacing: 2px; font-size: .8rem; }
+  .section-heading h2 { font-size: 2rem; }
+  .modal-heading { flex-direction: column; }
+  .modal-heading > button { align-self: flex-end; margin-top: -2.5rem; }
+}
